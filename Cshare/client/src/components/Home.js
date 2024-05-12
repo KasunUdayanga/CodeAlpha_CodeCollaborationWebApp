@@ -72,7 +72,7 @@ function Home() {
               </div>
               <button
                 onClick={joinRoom}
-                className="btn btn-secondary"
+                className="btn btn-primary btn-lg active"
               >
                 JOIN
               </button>
@@ -80,7 +80,7 @@ function Home() {
                 Don't have a room ID? create{" "}
                 <span
                   onClick={generateRoomId}
-                  className=" text-success p-2"
+                  className=" text-primary p-1"
                   style={{ cursor: "pointer" }}
                 >
                   {" "}
