@@ -15,20 +15,20 @@ function Editor({ socketRef, roomId, onCodeChange }) {
         document.getElementById("realtimeEditor"),
         {
           mode: { name: "javascript", json: true },
-          theme: "dracula",
+          theme: "moxer",
           autoCloseTags: true,
           autoCloseBrackets: true,
           lineNumbers: true,
         }
       );
-      // for sync the code
+
       editorRef.current = editor;
 
       editor.setSize(null, "100%");
       editorRef.current.on("change", (instance, changes) => {
          console.log("changes", instance ,  changes );
         const { origin } = changes;
-        const code = instance.getValue(); // code has value which we write
+        const code = instance.getValue(); 
         onCodeChange(code);
         if (origin !== "setValue") {
           socketRef.current.emit(ACTIONS.CODE_CHANGE, {
@@ -42,7 +42,7 @@ function Editor({ socketRef, roomId, onCodeChange }) {
     init();
   }, []);
 
-  // data receive from server
+
   useEffect(() => {
     if (socketRef.current) {
       socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
